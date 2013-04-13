@@ -1,0 +1,14 @@
+<launch>
+
+    <arg name="noLidar" default="0"/>
+
+    <!-- lidar node -->
+    <node pkg="sicktoolbox_wrapper" name="lidar" type="sicklms" unless="$(arg noLidar)" respawn="True">
+        <remap from="scan" to="lidar_raw"/>
+        <param name="port" value="/dev/lidar"/>
+        <param name="resolution" value="0.5"/>
+        <param name="frame-id" value="amos"/>
+        <!--<param name="baud" value="500000"/>-->
+    </node>
+
+</launch>

@@ -1,0 +1,10 @@
+<launch>
+    <!-- launch static tf frames -->
+    <include file="$(find launch)/base_frames.launch"/>
+
+    <!-- launch the Lidar -->
+    <include file="$(find launch)/sensors.launch"/>
+
+    <!-- launch base control -->
+    <include file="$(find launch)/base.launch"/>
+</launch>

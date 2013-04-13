@@ -1,0 +1,8 @@
+<launch>
+
+    <node pkg="tf" type="static_transform_publisher" name="laser_broadcaster" args="0 0 0.44 0 0 0 amos laser 100" />
+    <node pkg="tf" type="static_transform_publisher" name="camera_broadcaster" args="-0.091 0 1.073 -1.57 0 -2.0726 amos camera 100" />
+    <node pkg="tf" type="static_transform_publisher" name="lWheel_broadcaster" args="0 0.3625 0 0 0 0 amos lWheel 100" />
+    <node pkg="tf" type="static_transform_publisher" name="rWheel_broadcaster" args="0 -0.3625 0 0 0 0 amos rWheel 100" />
+    
+</launch>

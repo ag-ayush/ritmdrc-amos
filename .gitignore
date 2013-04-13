@@ -1,0 +1,10 @@
+# built/generated files
+*.o
+*.so
+CMakeCache.txt
+CMakeFiles/*
+
+#ros specific stuff
+.rosinstall.bck
+setup.*sh
+config/*

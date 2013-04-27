@@ -1,0 +1,6 @@
+<launch>
+	<!-- launch interface with arduinos -->
+    <!--<node pkg="rosserial_python" name="arduino_compass" type="serial_node.py" args="/dev/compass"/> --> <!-- old -->
+	<node pkg="rosserial_python" name="arduino_motor" type="serial_node.py" args="/dev/motor" respawn="true"/>
+    <node pkg="rosserial_python" name="arduino_imu" type="serial_node.py" args="/dev/compass" respawn="true"/>
+</launch>

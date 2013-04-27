@@ -1,15 +1,17 @@
 <launch>
     <!-- Run the map server -->
-    <include file="$(find launch)/map.launch"/>
+    <include file="$(find launch)/map.launch">
+        <arg name="lidarTopic" value="/lidar_raw"/>
+    </include>
 
     <!--- Run AMCL -->
     <include file="$(find amcl)/examples/amcl_diff.launch" />
 
     <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
-        <rosparam file="$(find amos_2dnav)/costmap_common_params.yaml" command="load" ns="global_costmap" />
-        <rosparam file="$(find amos_2dnav)/costmap_common_params.yaml" command="load" ns="local_costmap" />
-        <rosparam file="$(find amos_2dnav)/local_costmap_params.yaml" command="load" />
-        <rosparam file="$(find amos_2dnav)/global_costmap_params.yaml" command="load" />
-        <rosparam file="$(find amos_2dnav)/base_local_planner_params.yaml" command="load" />
+        <rosparam file="$(find amos_nav2d)/costmap_common_params.yaml" command="load" ns="global_costmap" />
+        <rosparam file="$(find amos_nav2d)/costmap_common_params.yaml" command="load" ns="local_costmap" />
+        <rosparam file="$(find amos_nav2d)/local_costmap_params.yaml" command="load" />
+        <rosparam file="$(find amos_nav2d)/global_costmap_params.yaml" command="load" />
+        <rosparam file="$(find amos_nav2d)/dwa_local_planner_params.yaml" command="load" />
     </node>
 </launch>

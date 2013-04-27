@@ -1,0 +1,17 @@
+<package>
+  <description brief="imu">
+
+     imu
+
+  </description>
+  <author>derrick</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/imu</url>
+
+  <depend package="rosserial_arduino"/>
+  <depend package="imu_msg"/>
+  <depend package="std_msgs"/>
+</package>
+
+

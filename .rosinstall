@@ -4,5 +4,8 @@
 # USE THE rosinstall TOOL INSTEAD.
 # IF YOU CHANGE IT, USE rosinstall FOR THE CHANGES TO TAKE EFFECT
 - setup-file: {local-name: /opt/ros/groovy/setup.sh}
-- other: {local-name: amos_nav2d}
 - other: {local-name: launch}
+- other: {local-name: hardware}
+- other: {local-name: rosserial}
+- other: {local-name: amos_base}
+- other: {local-name: amos_nav2d}

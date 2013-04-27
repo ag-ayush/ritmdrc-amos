@@ -1,0 +1,14 @@
+<package>
+  <description brief="imu_msg">
+
+     imu_msg
+
+  </description>
+  <author>Derrick Bommarito</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/imu_msg</url>
+
+</package>
+
+

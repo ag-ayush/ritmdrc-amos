@@ -9,3 +9,4 @@
 - other: {local-name: rosserial}
 - other: {local-name: amos_base}
 - other: {local-name: amos_nav2d}
+- other: {local-name: amos_tf}

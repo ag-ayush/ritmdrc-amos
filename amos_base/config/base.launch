@@ -8,11 +8,11 @@
         <param name="~/MotorI" value="0.0025"/>
         <param name="~/MotorD" value="0.018"/>
 
-        <param name="~/speedMaxFwd" value="2.0"/>
-        <param name="~/speedMaxRev" value="0.75"/>
+        <param name="~/speedMaxFwd" value="0.5"/>
+        <param name="~/speedMaxRev" value="0.5"/>
 
-        <param name="~/globalFrame" value="/world"/>
-        <param name="~/mapFrame" value="/map"/>
+        <param name="~/globalFrame" value="/map"/>
+        <param name="~/mapFrame" value="/amos_localize"/>
         <param name="~/localFrame" value="/amos"/>
 
         <remap from="~/odomReq" to="/reqOdom"/>

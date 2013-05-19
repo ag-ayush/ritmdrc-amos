@@ -11,9 +11,11 @@
 		<param name="odom_frame" value="/amos_localize"/>
 
         <!-- update speed -->
-        <param name="map_update_interval" value="2.0"/>
+        <param name="map_update_interval" value="5.0"/>
 
-        <param name="linearUpdate" value="0.3"/>
+        <param name="temporalUpdate" value="-1.0"/>
+        <param name="linearUpdate" value="0.5"/>
+        <param name="angularUpdate" value="0.5"/>
 
 		<param name="delta" value="0.10"/>
 

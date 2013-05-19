@@ -1,3 +1,6 @@
+# Make a 2D not 3D map
+map_type: costmap
+
 # max distance to place obstacles into the map
 obstacle_range: 4.0
 
@@ -11,4 +14,4 @@ footprint: [[0.32,-0.22],[0.32,0.22],[0.17,0.40],[-0.14,0.40],[-0.14,0.22],[-0.6
 observation_sources: laser_scan_sensor
 
 # info about the lidar
-laser_scan_sensor: {sensor_frame: /lidar, data_type: LaserScan, topic: /lidar_raw, marking: true, clearing: true}
+laser_scan_sensor: {sensor_frame: /laser, data_type: LaserScan, topic: /lidar_raw, marking: true, clearing: true}

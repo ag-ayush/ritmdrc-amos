@@ -1,4 +1,4 @@
-DWAPlannerROS:
+TrajectoryPlannerROS:
     max_vel_x: 2.00
     min_vel_x: 0.1
     max_rotational_vel: 1.0

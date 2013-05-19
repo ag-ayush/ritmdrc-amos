@@ -1,0 +1,15 @@
+<package>
+  <description brief="amos_tf">
+
+     amos_tf
+
+  </description>
+  <author>amos</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/amos_tf</url>
+  <depend package="tf"/>
+
+</package>
+
+

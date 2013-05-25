@@ -1,0 +1,19 @@
+<package>
+  <description brief="linedetect">
+
+     linedetect
+
+  </description>
+  <author>james</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/linedetect</url>
+
+  <depend package="roscpp"/>
+  <depend package="sensor_msgs"/>
+  <depend package="tf"/>
+  <depend package="camera_tools"/>
+
+</package>
+
+

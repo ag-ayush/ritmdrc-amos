@@ -10,3 +10,6 @@
 - other: {local-name: amos_base}
 - other: {local-name: amos_nav2d}
 - other: {local-name: amos_tf}
+- other: {local-name: laser_fix}
+- other: {local-name: vision}
+- other: {local-name: common}

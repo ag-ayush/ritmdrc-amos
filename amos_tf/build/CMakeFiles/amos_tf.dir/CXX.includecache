@@ -11,6 +11,8 @@ ros/ros.h
 -
 tf/transform_broadcaster.h
 -
+cmath
+-
 
 /opt/ros/groovy/include/XmlRpcDecl.h
 ros/macros.h

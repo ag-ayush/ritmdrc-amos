@@ -1,8 +1,13 @@
 # built/generated files
 *.o
 *.so
-CMakeCache.txt
-CMakeFiles/*
+*/CMakeCache.txt
+*/CMakeFiles/
+*/cmake_install.cmake
+*/catkin/
+*/catkin_generated/
+*/gtest
+*/.svn/
 
 #ros specific stuff
 .rosinstall.bck

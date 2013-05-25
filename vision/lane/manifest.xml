@@ -1,0 +1,27 @@
+<package>
+  <description brief="lane">
+
+      lane
+      Performs sensor synthesis on a laser scan and an RGB camera image for putting lane markers into a modified laser scan for mapping/avoidance functions.
+
+  </description>
+  <author>amos</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/lane</url>
+  
+  <rosdep name="opencv2"/>
+  
+  <depend package="sensor_msgs"/>
+  <depend package="roscpp"/>
+  <depend package="tf"/>
+  <depend package="camera_tools"/>
+  <depend package="cv_bridge"/>
+  <depend package="image_transport"/>
+  <depend package="dynamic_reconfigure"/>
+  <depend package="dynparam"/>
+  <depend package="lane_nav_msgs"/>
+
+</package>
+
+

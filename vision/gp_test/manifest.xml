@@ -1,0 +1,18 @@
+<package>
+  <description brief="gp_test">
+
+     gp_test
+
+  </description>
+  <author>Derrick Bommarito</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/gp_test</url>
+  <depend package="roscpp"/>
+  <depend package="camera_tools"/>
+  <depend package="tf"/>
+  <depend package="visualization_msgs"/>
+
+</package>
+
+

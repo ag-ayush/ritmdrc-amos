@@ -1,0 +1,13 @@
+<launch>
+    <arg name="showCross" default="False"/>
+    <arg name="width" default="320"/>
+    <arg name="height" default="240"/>
+
+    <node pkg="opencv_cam" name="front" type="opencv_cam" output="screen">
+        <param name="frameId" value="/camera"/>
+        <param name="cfgPath" value="$(env ROS_HOME)/camera/"/>
+        <param name="showCross" value="$(arg showCross)"/>
+        <param name="width" value="$(arg width)"/>
+        <param name="height" value="$(arg height)"/>
+    </node>
+</launch>

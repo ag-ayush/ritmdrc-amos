@@ -1,0 +1,18 @@
+<package>
+  <description brief="dynamicgrid">
+
+     dynamicgrid
+
+  </description>
+  <author>Derrick Bommarito</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/dynamicgrid</url>
+
+  <export>
+      <cpp cflags="-I${prefix}/include" />
+  </export>
+
+</package>
+
+

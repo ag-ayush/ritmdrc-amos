@@ -2,12 +2,19 @@
 
     <arg name="noLidar" default="0"/>
 
+    <node pkg="laser_fix" name="laser_fix" type="laser_fix">
+        <remap from="/laser_fix/lidar_out" to="/lidar_raw"/>
+    </node>
+
     <!-- lidar node -->
     <node pkg="sicktoolbox_wrapper" name="lidar" type="sicklms" unless="$(arg noLidar)" respawn="True">
-        <remap from="scan" to="/lidar_raw"/>
+        <remap from="scan" to="/laser_fix/lidar_in"/>
+
         <param name="port" value="/dev/lidar"/>
         <param name="resolution" value="0.5"/>
         <param name="frame-id" value="/amos"/>
+
+        <param name="use_rep_117" value="false"/> <!-- gets rid of inf/NaN in output scan, won't work after groovy -->
         <!--<param name="baud" value="500000"/>-->
     </node>
 

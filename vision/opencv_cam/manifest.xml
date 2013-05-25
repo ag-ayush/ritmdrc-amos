@@ -1,0 +1,20 @@
+<package>
+  <description brief="opencv_cam">
+
+     opencv_cam
+
+  </description>
+  <author>Derrick Bommarito</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/opencv_cam</url>
+  <rosdep name="opencv2"/>
+  <depend package="cv_bridge"/>
+  <depend package="roscpp"/>
+  <depend package="image_transport"/>
+  <depend package="sensor_msgs"/>
+  <depend package="camera_calibration_parsers"/>
+
+</package>
+
+

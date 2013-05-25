@@ -182,11 +182,11 @@ void Base::moveSubCallback( const geometry_msgs::Twist::ConstPtr &msg )
 
     // find scales if needed
     double leftScale = 1.0, rightScale = 1.0;
-    if( left > maxFwd ) leftScale = left/maxFwd;
-    if( left < maxRev ) leftScale = left/maxRev;
+    if( left > maxFwd ) leftScale = maxFwd/left;
+    if( left < maxRev ) leftScale = maxRev/left;
 
-    if( right > maxFwd ) rightScale = right/maxFwd;
-    if( right < maxRev ) rightScale = right/maxRev;
+    if( right > maxFwd ) rightScale = maxFwd/right;
+    if( right < maxRev ) rightScale = maxRev/right;
 
     // multiply by smallest scale
     if( rightScale < leftScale ) 
@@ -199,6 +199,8 @@ void Base::moveSubCallback( const geometry_msgs::Twist::ConstPtr &msg )
         left *= leftScale;
         right *= leftScale;
     }
+
+    ROS_INFO("amos_base: SET SPEED left = %f, right = %f", left, right);
 
     // set new motor speed
     setSpeedMsg.left  = left;

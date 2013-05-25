@@ -1,5 +1,6 @@
 #include <ros/ros.h>
 #include <tf/transform_broadcaster.h>
+#include <cmath>
 
 int main(int argc, char** argv){
   ros::init(argc, argv, "amos_tf_publisher");
@@ -31,7 +32,7 @@ int main(int argc, char** argv){
     // camera
     broadcaster.sendTransform(
       tf::StampedTransform(
-        tf::Transform(tf::Quaternion(0, 0, 0, 1), tf::Vector3(0.0, 0.0, 1.73)),
+        tf::Transform(tf::createQuaternionFromRPY(-M_PI/2.0-atan2( 52, 51 ), 0, -M_PI/2.0), tf::Vector3(-0.09, 0.0, 1.29)),
         ros::Time::now(),"amos", "camera"));
 
 

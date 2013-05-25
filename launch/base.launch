@@ -1,4 +1,5 @@
 <launch>
     <include file="$(find launch)/arduino.launch"/>
     <include file="$(find amos_base)/config/base.launch"/>
+    <include file="$(find launch)/camera.launch"/>
 </launch>

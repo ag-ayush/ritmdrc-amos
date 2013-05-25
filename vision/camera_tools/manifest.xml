@@ -1,0 +1,25 @@
+<package>
+  <description brief="camera_tools">
+
+     Utilities for performing projection and other manipulations based on a viewport.
+     
+     The initial purpose is to abstract out the functionality for projecting a camera pixel
+     onto the ground plane.
+
+  </description>
+  <author>Derrick Bommarito</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/camera_tools</url>
+  
+  <depend package="roscpp"/>
+  <depend package="tf"/>
+  <depend package="sensor_msgs"/>
+
+  <export>
+      <cpp cflags="-I${prefix}/include" lflags="-L${prefix}/lib -lcamtools"/>
+  </export>
+
+</package>
+
+

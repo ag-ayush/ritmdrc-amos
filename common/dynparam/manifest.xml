@@ -1,0 +1,20 @@
+<package>
+  <description brief="dynparam">
+
+     dynparam
+
+  </description>
+  <author>amos</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/dynparam</url>
+  <depend package="roscpp"/>
+  <depend package="std_msgs"/>
+
+  <export>
+      <cpp cflags="-I${prefix}/include" lflags="-L${prefix}/lib -ldynparam"/>
+  </export>
+
+</package>
+
+

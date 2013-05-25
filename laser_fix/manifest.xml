@@ -1,0 +1,17 @@
+<package>
+  <description brief="laser_fix">
+
+     laser_fix
+
+  </description>
+  <author>amos</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/laser_fix</url>
+
+  <depend package="roscpp"/>
+  <depend package="sensor_msgs"/>
+
+</package>
+
+

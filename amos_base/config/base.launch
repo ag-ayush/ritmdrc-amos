@@ -1,19 +1,19 @@
 <launch>
     <node pkg="amos_base" name="amos_base" type="amos_base">
-        <param name="~/width" value="0.73"/>
-        <param name="~/length" value="1.3"/>
-        <param name="~/height" value="1.0"/>
+        <param name="width" value="0.73"/>
+        <param name="length" value="1.3"/>
+        <param name="height" value="1.0"/>
 
-        <param name="~/MotorP" value="0.091"/>
-        <param name="~/MotorI" value="0.0025"/>
-        <param name="~/MotorD" value="0.018"/>
+        <param name="MotorP" value="0.091"/>
+        <param name="MotorI" value="0.0025"/>
+        <param name="MotorD" value="0.018"/>
 
-        <param name="~/speedMaxFwd" value="0.5"/>
-        <param name="~/speedMaxRev" value="0.5"/>
+        <param name="speedMaxFwd" value="0.5"/>
+        <param name="speedMaxRev" value="0.5"/>
 
-        <param name="~/globalFrame" value="/map"/>
-        <param name="~/mapFrame" value="/amos_localize"/>
-        <param name="~/localFrame" value="/amos"/>
+        <param name="globalFrame" value="/map"/>
+        <param name="mapFrame" value="/amos_localize"/>
+        <param name="localFrame" value="/amos"/>
 
         <remap from="~/odomReq" to="/reqOdom"/>
         <remap from="~/powerReq" to="/reqPower"/>

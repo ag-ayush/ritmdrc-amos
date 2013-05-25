@@ -1,0 +1,16 @@
+<package>
+  <description brief="lane_nav_msgs">
+
+     lane_nav_msgs
+
+  </description>
+  <author>james</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/lane_nav_msgs</url>
+
+  <depend package="geometry_msgs"/>
+
+</package>
+
+

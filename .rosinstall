@@ -13,3 +13,4 @@
 - other: {local-name: laser_fix}
 - other: {local-name: vision}
 - other: {local-name: common}
+- other: {local-name: tools}

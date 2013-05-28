@@ -3,7 +3,7 @@
     <arg name="noLidar" default="0"/>
 
     <node pkg="laser_fix" name="laser_fix" type="laser_fix">
-        <remap from="/laser_fix/lidar_out" to="/lidar_raw"/>
+        <remap from="~/lidar_out" to="/lidar_raw"/>
     </node>
 
     <!-- lidar node -->
@@ -12,10 +12,7 @@
 
         <param name="port" value="/dev/lidar"/>
         <param name="resolution" value="0.5"/>
-        <param name="frame-id" value="/amos"/>
-
-        <param name="use_rep_117" value="false"/> <!-- gets rid of inf/NaN in output scan, won't work after groovy -->
-        <!--<param name="baud" value="500000"/>-->
+        <param name="frame_id" value="/laser"/>
     </node>
 
 </launch>

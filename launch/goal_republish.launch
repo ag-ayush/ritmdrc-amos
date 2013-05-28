@@ -1,0 +1,5 @@
+<launch>
+    <node pkg="goal_republish" type="goal_republish" name="goal_republish">
+        <remap from="~/goal_out" to="/move_base_simple/goal"/>
+    </node>
+</launch>

@@ -68,6 +68,7 @@ CMakeFiles/amos_tf.dir/src/amos_tf.cpp.o: /opt/ros/groovy/share/roscpp/package.x
 CMakeFiles/amos_tf.dir/src/amos_tf.cpp.o: /opt/ros/groovy/share/message_filters/package.xml
 CMakeFiles/amos_tf.dir/src/amos_tf.cpp.o: /opt/ros/groovy/share/sensor_msgs/package.xml
 CMakeFiles/amos_tf.dir/src/amos_tf.cpp.o: /opt/ros/groovy/share/tf/package.xml
+CMakeFiles/amos_tf.dir/src/amos_tf.cpp.o: /opt/ros/groovy/share/nav_msgs/package.xml
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/amos/amos/amos_tf/build/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/amos_tf.dir/src/amos_tf.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -W -Wall -Wno-unused-parameter -fno-strict-aliasing -pthread -o CMakeFiles/amos_tf.dir/src/amos_tf.cpp.o -c /home/amos/amos/amos_tf/src/amos_tf.cpp

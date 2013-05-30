@@ -1,0 +1,21 @@
+<package>
+  <description brief="gps_convert">
+
+     gps_convert
+
+  </description>
+  <author></author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/gps_convert</url>
+  <depend package="sensor_msgs"/>
+  <depend package="geodesy"/>
+  <depend package="geographic_msgs"/>
+  <depend package="geometry_msgs"/>
+  <depend package="imu_msg"/>
+  <depend package="tf"/>
+  <depend package="dynparam"/>
+
+</package>
+
+

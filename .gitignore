@@ -2,17 +2,20 @@
 *.o
 *.so
 CMakeCache.txt
-*/CMakeFiles/*
+CMakeFiles/
 cmake_install.cmake
-*/catkin/*
-*/catkin_generated/*
-*/gtest/*
-*/.svn/*
-*/bin/*
-*/devel/*
+catkin/
+catkin_generated/
+gtest/
+.svn/
+bin/
+devel/
+build/
+msg_gen/
+srv_gen/
 CATKIN_IGNORE
 
 #ros specific stuff
 *.rosinstall.bck
 setup.*sh
-config/*
+config/

@@ -1,0 +1,15 @@
+byte UNKNOWN=0
+byte LANE=1
+byte START_GPS_CW=2
+byte START_GPS_CCW=3
+byte GPS_CW_1=4
+byte GPS_CW_2=5
+byte GPS_CCW_1=6
+byte GPS_CCW_2=7
+byte FENCE_CW=8
+byte FENCE_CCW=9
+byte END_GPS_CW=10
+byte END_GPS_CCW=11
+byte ALIGN_LANE=12
+byte GATE_CW=13
+byte GATE_CCW=14

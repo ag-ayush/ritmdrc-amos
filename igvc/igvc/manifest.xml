@@ -1,0 +1,20 @@
+<package>
+  <description brief="igvc">
+
+     igvc
+
+  </description>
+  <author>Derrick Bommarito</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/igvc</url>
+  <depend package="roscpp"/>
+  <depend package="nav_msgs"/>
+  <depend package="geometry_msgs"/>
+  <depend package="tf"/>
+  <depend package="dynparam"/>
+  <depend package="gps_convert"/>
+
+</package>
+
+

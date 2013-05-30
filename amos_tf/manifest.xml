@@ -8,7 +8,10 @@
   <license>BSD</license>
   <review status="unreviewed" notes=""/>
   <url>http://ros.org/wiki/amos_tf</url>
+
   <depend package="tf"/>
+  <depend package="roscpp"/>
+  <depend package="nav_msgs"/>
 
 </package>
 

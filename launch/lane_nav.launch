@@ -1,0 +1,9 @@
+<launch>
+    <node pkg="lane_nav" type="lane_nav" name="lane_nav">
+        <param name="markerPerpForce" value="1.0"/>
+        <param name="markerStraightForce" value="3.0"/>
+        <param name="searchDist" value="2.5"/>
+        <param name="distExponent" value="2"/>
+    </node>
+
+</launch>

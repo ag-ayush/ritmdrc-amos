@@ -13,6 +13,8 @@ tf/transform_broadcaster.h
 -
 cmath
 -
+geometry_msgs/PoseStamped.h
+-
 
 /opt/ros/groovy/include/XmlRpcDecl.h
 ros/macros.h

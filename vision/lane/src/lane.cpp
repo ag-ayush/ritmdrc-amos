@@ -302,7 +302,7 @@ void sendMarkers( std::vector<tf::Vector3> &lines ) {
 			marker.id = i;
 			marker.pose.position.x = lines[i].x();
 			marker.pose.position.y = lines[i].y();
-			marker.pose.position.z = lines[i].z();
+			marker.pose.position.z = 0;//lines[i].z();
 			marker.color.r = line_marker.type == lane_nav_msgs::Marker::STRAIGHT ? 1.0 : 0.0;
 			marker.color.g = line_marker.type == lane_nav_msgs::Marker::LEFT ? 1.0 : 0.0;
 			marker.color.b = line_marker.type == lane_nav_msgs::Marker::RIGHT ? 1.0 : 0.0;
@@ -311,7 +311,7 @@ void sendMarkers( std::vector<tf::Vector3> &lines ) {
 			marker.id = i+1;
 			marker.pose.position.x = lines[i+1].x();
 			marker.pose.position.y = lines[i+1].y();
-			marker.pose.position.z = lines[i+1].z();
+			marker.pose.position.z = 0;//lines[i+1].z();
 			marker.color.r = line_marker.type == lane_nav_msgs::Marker::STRAIGHT ? 1.0 : 0.0;
 			marker.color.g = line_marker.type == lane_nav_msgs::Marker::LEFT ? 1.0 : 0.0;
 			marker.color.b = line_marker.type == lane_nav_msgs::Marker::RIGHT ? 1.0 : 0.0;
@@ -378,7 +378,7 @@ int main(int argc, char** argv) {
 	 cv::namedWindow("left", 0);
 	 cv::namedWindow("right", 0);*/
 
-	height = 1.056;
+	height = 1.29;   // Camera height
 
 	gp = new camera_tools::GroundProjection(nh, "/front/camera_info", "/amos");
 
@@ -405,7 +405,7 @@ int main(int argc, char** argv) {
 	straightAngle.init(&nh, "straightAngle", CV_PI*45.0/180.0);
 
 	//Wait for the transform from camera to lidar to become available.
-	while (!tl->canTransform("/laser", "/camera", ros::Time(), 0) ||
+	while (!tl->canTransform("/amos", "/camera", ros::Time(), 0) ||
 			!tl->canTransform(markerFrame.get(), "/camera", ros::Time(), 0)) {
 
 		ros::spinOnce();

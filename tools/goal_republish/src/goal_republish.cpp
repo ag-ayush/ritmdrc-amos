@@ -20,7 +20,7 @@ int main( int argc, char **argv )
     ros::Publisher pub  = n.advertise<geometry_msgs::PoseStamped>( "goal_out", 1 );
     ros::Subscriber sub = n.subscribe( "goal_in", 1, goalCallback );
 
-    ros::Rate rate(5);
+    ros::Rate rate(2);
 
     while( ros::ok() )
     {

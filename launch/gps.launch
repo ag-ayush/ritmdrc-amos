@@ -1,0 +1,10 @@
+<launch>
+    <arg name="noGPS_driver" default="0"/>
+
+    <node pkg="nmea_gps_driver" name="gps_driver" type="nmea_gps_driver.py" unless="$(arg noGPS_driver)">
+        <remap from="fix" to="gps"/>
+        <param name="port" value="/dev/gps"/>
+        <param name="baud" value="38400"/>
+    </node>
+    <node pkg="gps_convert" name="gps" type="gps_convert"/>
+</launch>

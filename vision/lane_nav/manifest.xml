@@ -1,0 +1,22 @@
+<package>
+  <description brief="lane_nav">
+
+     lane_nav
+
+  </description>
+  <author>amos</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/lane_nav</url>
+  <depend package="geometry_msgs"/>
+  <depend package="nav_msgs"/>
+  <depend package="lane_nav_msgs"/>
+  <depend package="visualization_msgs"/>
+  <depend package="dynamicgrid"/>
+  <depend package="tf"/>
+  <depend package="roscpp"/>
+  <depend package="dynparam"/>
+
+</package>
+
+

@@ -1,5 +1,35 @@
 <launch>
-    <include file="$(find launch)/arduino.launch"/>
+    <!-- Arguments for disabling specific nodes -->
+    <arg name="noLidar" default="0"/>
+    <arg name="noGPS" default="0"/>
+    <arg name="noGPS_driver" default="0"/>
+    
+    <!-- the lidar topic for mapping -->
+    <arg name="lidarTopic" default="/lidar_raw"/>
+    
+    <!-- showCross:=1 to display a crosshair centered on the ocv_camera images -->
+    <arg name="showCross" default="False"/>
+    
+    <!-- Specify the image size to use with ocv_camera nodes -->
+    <arg name="width" default="320"/>
+    <arg name="height" default="240"/>
+
+    <!-- gps driver -->
+    <include file="$(find launch)/gps.launch" unless="$(arg noGPS)" >
+        <arg name="noGPS_driver" value="$(arg noGPS_driver)"/>
+    </include>
+
+    <!-- launch the front camera -->
+    <include file="$(find launch)/camera.launch">
+        <arg name="showCross" value="$(arg showCross)"/>
+        <arg name="width" value="$(arg width)"/>
+        <arg name="height" value="$(arg height)"/>
+    </include>
+
+    <!-- launch arduinos and sensors -->
+    <include file="$(find launch)/arduino.launch" />
+    
+    <!-- launch base driver -->
     <include file="$(find amos_base)/config/base.launch"/>
-    <include file="$(find launch)/camera.launch"/>
+
 </launch>

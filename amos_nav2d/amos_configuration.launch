@@ -5,6 +5,4 @@
     <!-- launch the Lidar -->
     <include file="$(find launch)/sensors.launch"/>
 
-    <!-- launch base control -->
-    <include file="$(find launch)/base.launch"/>
 </launch>

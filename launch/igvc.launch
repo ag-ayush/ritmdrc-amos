@@ -10,13 +10,11 @@
       <!-- mission nodes -->
     <arg name="noLane" default="0"/>
     <arg name="noLaneNav" default="0"/>
-    <arg name="noLocal" default="0"/>
-    <arg name="noGlobal" default="0"/>
-    <arg name="noPath" default="0"/>
 
-    <!--<arg name="lidarTopic" value="/lane/lidar" unless="$(arg noLane)"/>-->
-    <arg name="lidarTopic" value="/lidar_raw"/><!-- if="$(arg noLane)"/>-->
+    <arg name="lidarTopic" value="/lane/lidar"/><!-- unless="$(arg noLane)"/>-->
+    <!--<arg name="lidarTopic" value="/lidar_raw"/> if="$(arg noLane)"/>-->
     
+    <!-- launch the amos base code -->
     <include file="$(find launch)/base.launch">
         <arg name="lidarTopic" value="$(arg lidarTopic)"/>
         <arg name="noLidar" value="$(arg noLidar)"/>
@@ -24,22 +22,16 @@
         <arg name="noGPS_driver" value="$(arg noGPS_driver)"/>
     </include>
     
+    <!-- launch the line detection -->
     <include file="$(find launch)/lane.launch" unless="$(arg noLane)"/>
 
+    <!-- launch lane navigation -->
     <include file="$(find launch)/lane_nav.launch" unless="$(arg noLaneNav)"/>
     
-    <include file="$(find launch)/local_nav.launch" unless="$(arg noLocal)">
-        <arg name="lidarTopic" value="$(arg lidarTopic)"/>
-        <arg name="mapGoal" value="/avoid/goal"/>
-        <arg name="noPath" value="$(arg noPath)"/>
-    </include>
-    
-    <include file="$(find launch)/global_nav.launch" unless="$(arg noGlobal)">
-        <!--<arg name="waypointsFile" value="$(find igvc)/waypoints/rit.txt"/>-->
-    </include>
+    <!-- launch the nav stack -->
+    <include file="$(find launch)/nav.launch"/>
 
-    <node pkg="speech" name="speech" type="speech"/>
-    
+    <!-- finally launch the top level IGVC node -->
     <node pkg="igvc" name="igvc" type="igvc" unless="$(arg noIGVC)">
         <remap from="/laneGoal" to="/lane_nav/goal"/>
         <param name="waypoint_file" value="$(find igvc)/waypoints/igvc2012.txt"/>

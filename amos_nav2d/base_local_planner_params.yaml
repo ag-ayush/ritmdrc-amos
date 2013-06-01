@@ -4,6 +4,8 @@ TrajectoryPlannerROS:
     max_rotational_vel: 0.25
     min_in_place_rotational_vel: 0.25
 
+    occdist_scale: 0.01
+
     acc_lim_th: 0.2
     acc_lim_x: 0.5
     acc_lim_y: 0.5

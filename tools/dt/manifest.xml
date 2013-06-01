@@ -1,0 +1,17 @@
+<package>
+  <description brief="dt">
+
+     dynparam_tools
+
+  </description>
+  <author>Derrick Bommarito</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/dynparam_tools</url>
+  <depend package="roscpp"/>
+  <depend package="dynparam"/>
+  <depend package="std_msgs"/>
+
+</package>
+
+

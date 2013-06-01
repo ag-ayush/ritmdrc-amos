@@ -124,7 +124,7 @@ void projectImageToLidar(std::vector<cv::Vec4i>& lines, std::vector<tf::Vector3>
 	tf::StampedTransform ltf;
 
 	try {
-		tl->lookupTransform("/world", "/camera", ros::Time(), ltf);
+		tl->lookupTransform(markerFrame.get(), "/camera", ros::Time(), ltf);
 	} catch (tf::TransformException& e) {
 		ROS_ERROR("LANE: %s", e.what());
 		return;
@@ -152,12 +152,12 @@ void adjustLidarScan(std::vector<tf::Vector3>& lidarPts) {
 	size_t start, end;
 
 	for (size_t i = 0; i < lidarPts.size(); i += 2) {
-		tf::Vector3 &ptA = lidarPts[i];
-		tf::Vector3 &ptB = lidarPts[i + 1];
+		tf::Vector3 ptA = lidarPts[i];
+		tf::Vector3 ptB = lidarPts[i + 1];
 
         try {
             tf::StampedTransform ltf;
-            tl->lookupTransform("/laser", "/world", ros::Time(), ltf);
+            tl->lookupTransform("/laser", markerFrame.get(), ros::Time(), ltf);
 
             ptA = ltf*ptA;
             ptB = ltf*ptB;
@@ -227,13 +227,13 @@ void sendMarkers( std::vector<tf::Vector3> &lines ) {
 
 	geometry_msgs::PoseStamped closer, farther, amos;
 	ros::Time t( ros::Time::now() );
-	closer.header.frame_id = "/world";
+	closer.header.frame_id = markerFrame.get();
 	closer.header.stamp = t;
-	farther.header.frame_id = "/world";
+	farther.header.frame_id = markerFrame.get();
 	farther.header.stamp = t;
 
 	// get amos' positionin the map
-	tl->transformPose( "/world", origin, amos );
+	tl->transformPose( markerFrame.get(), origin, amos );
 
 	double amos_yaw = tf::getYaw( amos.pose.orientation );
 
@@ -292,7 +292,10 @@ void sendMarkers( std::vector<tf::Vector3> &lines ) {
 		}
 
 		line_marker.closer = closer;
+		line_marker.closer.header = closer.header;
+
 		line_marker.farther = farther;
+		line_marker.farther.header = farther.header;
 
 		markers.markers.push_back(line_marker);
 		markers.header.stamp = t;
@@ -302,7 +305,7 @@ void sendMarkers( std::vector<tf::Vector3> &lines ) {
 			marker.id = i;
 			marker.pose.position.x = lines[i].x();
 			marker.pose.position.y = lines[i].y();
-			marker.pose.position.z = 0;//lines[i].z();
+			marker.pose.position.z = lines[i].z();
 			marker.color.r = line_marker.type == lane_nav_msgs::Marker::STRAIGHT ? 1.0 : 0.0;
 			marker.color.g = line_marker.type == lane_nav_msgs::Marker::LEFT ? 1.0 : 0.0;
 			marker.color.b = line_marker.type == lane_nav_msgs::Marker::RIGHT ? 1.0 : 0.0;
@@ -311,7 +314,7 @@ void sendMarkers( std::vector<tf::Vector3> &lines ) {
 			marker.id = i+1;
 			marker.pose.position.x = lines[i+1].x();
 			marker.pose.position.y = lines[i+1].y();
-			marker.pose.position.z = 0;//lines[i+1].z();
+			marker.pose.position.z = lines[i+1].z();
 			marker.color.r = line_marker.type == lane_nav_msgs::Marker::STRAIGHT ? 1.0 : 0.0;
 			marker.color.g = line_marker.type == lane_nav_msgs::Marker::LEFT ? 1.0 : 0.0;
 			marker.color.b = line_marker.type == lane_nav_msgs::Marker::RIGHT ? 1.0 : 0.0;

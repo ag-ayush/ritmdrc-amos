@@ -13,5 +13,7 @@
         <remap from="/lane/markers" to="/lane_nav/markers"/>
 
         <param name="straightAngle" value="1.2"/>
+
+        <param name="markerFrame" value="/world"/>
     </node>
 </launch>

@@ -39,10 +39,10 @@ RM = /usr/bin/cmake -E remove -f
 CMAKE_EDIT_COMMAND = /usr/bin/ccmake
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/amos/amos/speech
+CMAKE_SOURCE_DIR = /home/amos/amos/tools/dt
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/amos/amos/speech
+CMAKE_BINARY_DIR = /home/amos/amos/tools/dt
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -110,9 +110,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/amos/amos/speech/CMakeFiles /home/amos/amos/speech/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/amos/amos/tools/dt/CMakeFiles /home/amos/amos/tools/dt/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/amos/amos/speech/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/amos/amos/tools/dt/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -190,6 +190,19 @@ doxygen: cmake_check_build_system
 doxygen/fast:
 	$(MAKE) -f CMakeFiles/doxygen.dir/build.make CMakeFiles/doxygen.dir/build
 .PHONY : doxygen/fast
+
+#=============================================================================
+# Target rules for targets named dt
+
+# Build rule for target.
+dt: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 dt
+.PHONY : dt
+
+# fast build rule for target.
+dt/fast:
+	$(MAKE) -f CMakeFiles/dt.dir/build.make CMakeFiles/dt.dir/build
+.PHONY : dt/fast
 
 #=============================================================================
 # Target rules for targets named rosbuild_clean-test-results
@@ -283,19 +296,6 @@ run_tests/fast:
 .PHONY : run_tests/fast
 
 #=============================================================================
-# Target rules for targets named speech
-
-# Build rule for target.
-speech: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 speech
-.PHONY : speech
-
-# fast build rule for target.
-speech/fast:
-	$(MAKE) -f CMakeFiles/speech.dir/build.make CMakeFiles/speech.dir/build
-.PHONY : speech/fast
-
-#=============================================================================
 # Target rules for targets named test
 
 # Build rule for target.
@@ -386,29 +386,29 @@ gtest_main/fast:
 	$(MAKE) -f gtest/CMakeFiles/gtest_main.dir/build.make gtest/CMakeFiles/gtest_main.dir/build
 .PHONY : gtest_main/fast
 
-src/speech.o: src/speech.cpp.o
-.PHONY : src/speech.o
+src/dynparam.o: src/dynparam.cpp.o
+.PHONY : src/dynparam.o
 
 # target to build an object file
-src/speech.cpp.o:
-	$(MAKE) -f CMakeFiles/speech.dir/build.make CMakeFiles/speech.dir/src/speech.cpp.o
-.PHONY : src/speech.cpp.o
+src/dynparam.cpp.o:
+	$(MAKE) -f CMakeFiles/dt.dir/build.make CMakeFiles/dt.dir/src/dynparam.cpp.o
+.PHONY : src/dynparam.cpp.o
 
-src/speech.i: src/speech.cpp.i
-.PHONY : src/speech.i
+src/dynparam.i: src/dynparam.cpp.i
+.PHONY : src/dynparam.i
 
 # target to preprocess a source file
-src/speech.cpp.i:
-	$(MAKE) -f CMakeFiles/speech.dir/build.make CMakeFiles/speech.dir/src/speech.cpp.i
-.PHONY : src/speech.cpp.i
+src/dynparam.cpp.i:
+	$(MAKE) -f CMakeFiles/dt.dir/build.make CMakeFiles/dt.dir/src/dynparam.cpp.i
+.PHONY : src/dynparam.cpp.i
 
-src/speech.s: src/speech.cpp.s
-.PHONY : src/speech.s
+src/dynparam.s: src/dynparam.cpp.s
+.PHONY : src/dynparam.s
 
 # target to generate assembly for a file
-src/speech.cpp.s:
-	$(MAKE) -f CMakeFiles/speech.dir/build.make CMakeFiles/speech.dir/src/speech.cpp.s
-.PHONY : src/speech.cpp.s
+src/dynparam.cpp.s:
+	$(MAKE) -f CMakeFiles/dt.dir/build.make CMakeFiles/dt.dir/src/dynparam.cpp.s
+.PHONY : src/dynparam.cpp.s
 
 # Help Target
 help:
@@ -420,6 +420,7 @@ help:
 	@echo "... ROSBUILD_gensrv_cpp"
 	@echo "... clean_test_results"
 	@echo "... doxygen"
+	@echo "... dt"
 	@echo "... edit_cache"
 	@echo "... install"
 	@echo "... install/local"
@@ -433,7 +434,6 @@ help:
 	@echo "... rospack_genmsg_libexe"
 	@echo "... rospack_gensrv"
 	@echo "... run_tests"
-	@echo "... speech"
 	@echo "... test"
 	@echo "... test-future"
 	@echo "... test-results"
@@ -441,9 +441,9 @@ help:
 	@echo "... tests"
 	@echo "... gtest"
 	@echo "... gtest_main"
-	@echo "... src/speech.o"
-	@echo "... src/speech.i"
-	@echo "... src/speech.s"
+	@echo "... src/dynparam.o"
+	@echo "... src/dynparam.i"
+	@echo "... src/dynparam.s"
 .PHONY : help
 
 

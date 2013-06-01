@@ -291,7 +291,7 @@ int main( int argc, char **argv )
 
                         // Set the namespace and id for this marker.  This serves to create a unique ID
                         // Any marker sent with the same namespace and id will overwrite the old one
-                        vis_marker.ns = "line_nav";
+                        vis_marker.ns = "lane_nav";
                         vis_marker.lifetime = ros::Duration(0.5);
                         vis_marker.id = i++;
 
@@ -302,13 +302,12 @@ int main( int argc, char **argv )
                             scale = 0.05;
                         } else {
                             vis_marker.type = visualization_msgs::Marker::ARROW;
-                            scale = 0.5;
+                            scale = 0.50;
                         }
 
                         // Set the marker action.  Options are ADD and DELETE
                         vis_marker.action = visualization_msgs::Marker::ADD;
 
-                        // Set the pose of the marker.  This is a full 6DOF pose relative to the frame/time specified in the header
                         vis_marker.pose.position.x = x;
                         vis_marker.pose.position.y = y;
                         vis_marker.pose.position.z = 0;
@@ -316,8 +315,8 @@ int main( int argc, char **argv )
 
                         // Set the scale of the marker -- 1x1x1 here means 1m on a side
                         vis_marker.scale.x = scale;
-                        vis_marker.scale.y = scale;
-                        vis_marker.scale.z = scale;
+                        vis_marker.scale.y = 0.05;
+                        vis_marker.scale.z = 0.05;
 
                         // Set the color -- be sure to set alpha to something non-zero!
                         vis_marker.color.r = 1.0f;

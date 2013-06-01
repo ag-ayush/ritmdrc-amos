@@ -202,7 +202,7 @@ int main( int argc, char **argv )
     markerFrame.init(&n, "/lane/markerFrame", "/world");
     
 	DoubleParam scaleForce;
-	scaleForce.init(&n, "scaleForce", 5.0);
+	scaleForce.init(&n, "scaleForce", 2.0);
 
 	DoubleParam markerResolution;
 	markerResolution.init(&n, "markerResolution", 0.5);

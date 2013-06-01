@@ -51,6 +51,8 @@ BoolParam showDebug;
 BoolParam always_straight;
 BoolParam disabled;
 
+IntParam lidarFixRange;
+
 StringParam markerFrame;
 
 tf::TransformListener *tl;
@@ -151,6 +153,8 @@ void adjustLidarScan(std::vector<tf::Vector3>& lidarPts) {
 
 	size_t start, end;
 
+    size_t minAngleChanged = lidar_raw->ranges.size(), maxAngleChanged = 0;
+
 	for (size_t i = 0; i < lidarPts.size(); i += 2) {
 		tf::Vector3 ptA = lidarPts[i];
 		tf::Vector3 ptB = lidarPts[i + 1];
@@ -188,11 +192,30 @@ void adjustLidarScan(std::vector<tf::Vector3>& lidarPts) {
 
 			if (d < lidar_raw->ranges[start]) {
 				newLidar.ranges[start] = d;
-			}
 
-			//theta += lidar_raw->angle_increment;
+                if( start < minAngleChanged ) minAngleChanged = start;
+                if( start > maxAngleChanged ) maxAngleChanged = start;
+			}
 		}
 	}
+
+    ROS_INFO("lane: min_angle = %i\tmax_angle = %i", minAngleChanged, maxAngleChanged);
+    // pull the min/max angle back to end of scan
+    if( minAngleChanged <= lidarFixRange.get() )
+    {
+        for( int i = minAngleChanged-1; i >= 0; i-- )
+        {
+            newLidar.ranges[i] = newLidar.ranges[minAngleChanged];
+        }
+    }
+
+    if( maxAngleChanged >= lidar_raw->ranges.size() - lidarFixRange.get() )
+    {
+        for( int i = maxAngleChanged+1; i < newLidar.ranges.size(); i++ )
+        {
+            newLidar.ranges[i] = newLidar.ranges[maxAngleChanged];
+        }
+    }
 
 	pLidar.publish(newLidar);
 }
@@ -386,6 +409,8 @@ int main(int argc, char** argv) {
 	gp = new camera_tools::GroundProjection(nh, "/front/camera_info", "/amos");
 
     markerFrame.init(&nh, "markerFrame", "/world");
+
+    lidarFixRange.init(&nh, "lidarFixRange", 10);
 
 	msgWindow.init(&nh, "msgWindow", 0.2);
 

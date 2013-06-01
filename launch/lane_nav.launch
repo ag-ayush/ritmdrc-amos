@@ -1,4 +1,7 @@
 <launch>
+    <!-- launch the line detection -->
+    <include file="$(find launch)/lane.launch"/>
+
     <node pkg="lane_nav" type="lane_nav" name="lane_nav">
         <param name="markerPerpForce" value="1.0"/>
         <param name="markerStraightForce" value="3.0"/>

@@ -242,7 +242,7 @@ int main( int argc, char **argv )
 
     tfs->waitForTransform(markerFrame.get(), "/amos", ros::Time(), ros::Duration(10));
 
-    ros::Rate rate(50);
+    ros::Rate rate(5);
 	/*
 	 * main loop
 	 */

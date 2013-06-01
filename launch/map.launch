@@ -2,6 +2,9 @@
     <!-- SLaM map building -->
     
     <arg name="lidarTopic" default="/lidar_raw"/>
+
+    <!-- launch the Lidar -->
+    <include file="$(find launch)/sensors.launch"/>
     
     <node pkg="gmapping" name="SLaM" type="slam_gmapping">
         <remap from="/scan" to="$(arg lidarTopic)"/>     <!-- use the right lidar scan -->

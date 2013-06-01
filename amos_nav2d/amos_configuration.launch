@@ -1,8 +1,3 @@
 <launch>
-    <!-- launch static tf frames -->
-    <node pkg="amos_tf" type="amos_tf" name="amos_tf"/>
-
-    <!-- launch the Lidar -->
-    <include file="$(find launch)/sensors.launch"/>
 
 </launch>

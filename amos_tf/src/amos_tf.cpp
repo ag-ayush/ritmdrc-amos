@@ -26,13 +26,13 @@ int main(int argc, char** argv){
 
   ros::Publisher odom_pub = n.advertise<nav_msgs::Odometry>( "odom", 1 );
 
-  while(n.ok()){
-    // World - TODO remove
+  // initial world transform
     broadcaster.sendTransform(
       tf::StampedTransform(
         tf::Transform(tf::Quaternion(0, 0, 0, 1), tf::Vector3(0.0, 0.0, 0.0)),
         ros::Time::now(),"map", "world"));
 
+  while(n.ok()){
     // Lidar
     broadcaster.sendTransform(
       tf::StampedTransform(

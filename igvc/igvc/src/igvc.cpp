@@ -36,10 +36,10 @@ void mainLoop();
 
 void unknownIteration();
 void laneIteration();
-void gpsIteration();
-void fenceIteration();
+void gpsIteration( bool pub );
+void fenceIteration( bool pub );
 void gateIteration();
-void alignIteration();
+void alignIteration( bool pub );
 
 /** Common functions for switching to various modes **/
 void startGPS(int nextMode);
@@ -97,8 +97,6 @@ geometry_msgs::PoseStamped amosWorld; //position relative to starting GPS fix
 
 /** Publishers **/
 ros::Publisher navPub; //Where we should be headed
-ros::Publisher pathPub;
-ros::Publisher gotoPub; //Used when aligning to a heading
 ros::Publisher speechPub; //Used for debug tts output
 
 /** Subscribers **/
@@ -144,9 +142,7 @@ void initParams(ros::NodeHandle& nh) {
 }
 
 void initPublishers(ros::NodeHandle& nh) {
-	navPub = nh.advertise<geometry_msgs::PoseStamped>("/avoid/goal", 1);
-    pathPub = nh.advertise<nav_msgs::Path>("/path/plan", 1);
-	gotoPub = nh.advertise<geometry_msgs::PoseStamped>("/goto/goal", 1);
+	navPub = nh.advertise<geometry_msgs::PoseStamped>("/move_base_simple/goal", 1);
 	speechPub = nh.advertise<std_msgs::String>("/speech/tts", 10);
 }
 
@@ -259,23 +255,8 @@ void laneCallback(const geometry_msgs::PoseStamped& msg) {
 
 	goalLocal.pose.position.x += forwardForce.get();
 
-	if (usePath.get()) {
-        try{
-            nav_msgs::Path p;
-            geometry_msgs::PoseStamped goalWorld;
-            goalLocal.header.stamp = ros::Time();
-            tl->transformPose("/map", goalLocal, goalWorld);
-            p.poses.push_back(goalWorld);
-
-            pathPub.publish(p);
-        }
-        catch( tf::TransformException &e )
-        {
-            ROS_ERROR("IGVC: %s", e.what());
-        }
-    } else {
-        navPub.publish(goalLocal);
-    }
+    // publish goal to the navigation stack
+    navPub.publish(goalLocal);
 }
 
 void announceMode() {
@@ -338,9 +319,25 @@ void mainLoop() {
 	gotoDisabled.set(false);
 	stop.set(false);
 
+    bool pub_msg;
+    int count = 0;
+#define PUB_COUNT 10
+
 	while (ros::ok()) {
 		ros::spinOnce();
 		rate.sleep();
+        
+        // rate limit the message publishing
+        count ++;
+        if( count >= PUB_COUNT )
+        {
+            count = 0;
+            pub_msg = true;
+        }
+        else
+        {
+            pub_msg = false;
+        }
 
 		//Get amos' position in the waypt frame
 		amosLocal.header.stamp = ros::Time();
@@ -380,16 +377,16 @@ void mainLoop() {
 				case igvc::Mode::GPS_CCW_2:
 				case igvc::Mode::END_GPS_CW:
 				case igvc::Mode::END_GPS_CCW:
-					gpsIteration();
+					gpsIteration(pub_msg);
 					break;
 
 				case igvc::Mode::FENCE_CW:
 				case igvc::Mode::FENCE_CCW:
-					fenceIteration();
+					fenceIteration(pub_msg);
 					break;
 
 				case igvc::Mode::ALIGN_LANE:
-					alignIteration();
+					alignIteration(pub_msg);
 					break;
 			}
         }
@@ -420,7 +417,7 @@ void laneIteration() {
 	if (lastLeg) {
 		double dist = hypot(amosWorld.pose.position.x, amosWorld.pose.position.y);
 		if (dist < entryThresh.get()) {
-			speak(speechPub, "i g v c where is my money");
+			//speak(speechPub, "i g v c where is my money");
 			gotoDisabled.set(true);
 			return;
 		}
@@ -455,7 +452,7 @@ void laneIteration() {
 	//in the lane callback.
 }
 
-void gpsIteration() {
+void gpsIteration( bool pub ) {
 	//Navigating to a waypoint. See if we've arrived.
 	geometry_msgs::PoseStamped goalLocal;
 	tl->transformPose("/amos", curGoal, goalLocal);
@@ -524,10 +521,11 @@ void gpsIteration() {
 		}
 	}
 
-	navPub.publish(curGoal);
+    if( pub )
+        navPub.publish(curGoal);
 }
 
-void fenceIteration() {
+void fenceIteration( bool pub ) {
 	//Try to get to the west end of the fence (closer to the tent)
 
 	//Navigating to a waypoint. See if we've arrived.
@@ -546,7 +544,8 @@ void fenceIteration() {
 		return;
 	}
 
-	navPub.publish(fencePts.poses[0]);
+    if( pub )
+        navPub.publish(fencePts.poses[0]);
 }
 
 void gateIteration() {
@@ -596,7 +595,7 @@ void gateIteration() {
 	navPub.publish(fencePts.poses[1]);
 }
 
-void alignIteration() {
+void alignIteration( bool pub ) {
 	double dTheta = entryTheta - tf::getYaw(amosWorld.pose.orientation);
 	while (dTheta < -M_PI) dTheta += 2 * M_PI;
 	while (dTheta > M_PI) dTheta -= 2 * M_PI;
@@ -616,7 +615,8 @@ void alignIteration() {
 	turnGoal.pose.position.y = dTheta > 0 ? 1 : -1;
 	turnGoal.pose.orientation.w = 1;
 
-	navPub.publish(turnGoal);
+    if( pub )
+        navPub.publish(turnGoal);
 }
 
 int main(int argc, char** argv) {

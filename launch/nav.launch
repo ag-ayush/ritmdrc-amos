@@ -1,8 +1,8 @@
 <launch>
-    <!-- launch base control and sensors -->
-    <include file="$(find amos_nav2d)/amos_configuration.launch"/>
-
     <!-- launch the nav stack -->
     <include file="$(find amos_nav2d)/move_base.launch"/>
 
+    <!-- launch the amos base code -->
+    <include file="$(find launch)/base.launch"/>
+    
 </launch>

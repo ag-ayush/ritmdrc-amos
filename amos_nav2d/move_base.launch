@@ -6,9 +6,6 @@
         <arg name="lidarTopic" value="/lidar_raw"/>
     </include>
 
-    <!--- Run AMCL -->
-    <!--<include file="$(find amos_nav2d)/amcl_diff.launch" />-->
-
     <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
         <remap from="cmd_vel" to="/amos_base/moveCmd"/>
         <remap from="odom" to="/amos_tf/odom"/>

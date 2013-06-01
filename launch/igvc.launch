@@ -2,28 +2,16 @@
     <!-- Arguments for disabling specific nodes -->
       <!-- base nodes -->
     <arg name="noLidar" default="0"/>
+    <arg name="noLaneNav" default="0"/>
+    <arg name="noLane" default="0"/>
     <arg name="noGPS" default="0"/>
     <arg name="noGPS_driver" default="0"/>
     <arg name="noIGVC" default="0"/>
-
     
-      <!-- mission nodes -->
-    <arg name="noLane" default="0"/>
-    <arg name="noLaneNav" default="0"/>
-
-    <arg name="lidarTopic" value="/lane/lidar"/><!-- unless="$(arg noLane)"/>-->
-    <!--<arg name="lidarTopic" value="/lidar_raw"/> if="$(arg noLane)"/>-->
-    
-    <!-- launch the amos base code -->
-    <include file="$(find launch)/base.launch">
-        <arg name="lidarTopic" value="$(arg lidarTopic)"/>
-        <arg name="noLidar" value="$(arg noLidar)"/>
-        <arg name="noGPS" value="$(arg noGPS)"/>
+    <!-- gps driver -->
+    <include file="$(find launch)/gps.launch" unless="$(arg noGPS)" >
         <arg name="noGPS_driver" value="$(arg noGPS_driver)"/>
     </include>
-    
-    <!-- launch the line detection -->
-    <include file="$(find launch)/lane.launch" unless="$(arg noLane)"/>
 
     <!-- launch lane navigation -->
     <include file="$(find launch)/lane_nav.launch" unless="$(arg noLaneNav)"/>
@@ -39,4 +27,7 @@
         <param name="forwardForce" value="0.8"/>
         <param name="usePath" value="False"/>
     </node>
+
+    <!-- speech -->
+    <node pkg="speech" name="speech" type="speech"/>
 </launch>

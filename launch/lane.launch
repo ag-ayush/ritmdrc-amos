@@ -1,4 +1,14 @@
 <launch>
+    <!-- Specify the image size to use with ocv_camera nodes -->
+    <arg name="width" default="320"/>
+    <arg name="height" default="240"/>
+
+    <!-- launch the front camera -->
+    <include file="$(find launch)/camera.launch">
+        <arg name="width" value="$(arg width)"/>
+        <arg name="height" value="$(arg height)"/>
+    </include>
+
     <node pkg="lane" name="lane" type="lane">
         <remap from="/lane/markers" to="/lane_nav/markers"/>
 

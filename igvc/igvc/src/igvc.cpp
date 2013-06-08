@@ -385,6 +385,8 @@ void mainLoop() {
 					fenceIteration(pub_msg);
 					break;
 
+                // TODO: Gate mode iteration.
+
 				case igvc::Mode::ALIGN_LANE:
 					alignIteration(pub_msg);
 					break;
@@ -548,7 +550,7 @@ void fenceIteration( bool pub ) {
         navPub.publish(fencePts.poses[0]);
 }
 
-void gateIteration() {
+void gateIteration() { // TODO: pub bool, same as other iter. functions.
 	//We want to follow the fence east, looking for the gate
 
 	//see if we've crossed through the fence

@@ -1,12 +1,10 @@
 <launch>
 
-    <arg name="wayptFile" default="$(find igvc)/waypoints/qual2012.txt"/>
+    <arg name="wayptFile" default="$(find igvc)/waypoints/qual2013.txt"/>
 
     <include file="$(find launch)/igvc.launch">
-        <arg name="noGlobal" value="1"/>
         <arg name="noLane" value="1"/>
         <arg name="noIGVC" value="1"/>
-        <arg name="noPath" value="1"/>
     </include>
     
     <node pkg="igvc" name="qual" type="qual">

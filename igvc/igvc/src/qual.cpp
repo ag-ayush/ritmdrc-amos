@@ -53,7 +53,8 @@ int main(int argc, char** argv) {
 	DoubleParam navThresh;
 	navThresh.init(&nh, "/navThresh", 1.0);
 
-	ros::Publisher wayptPub = nh.advertise<geometry_msgs::PoseStamped>("/apf/goal", 1);
+//	ros::Publisher wayptPub = nh.advertise<geometry_msgs::PoseStamped>("/apf/goal", 1);
+	ros::Publisher wayptPub = nh.advertise<geometry_msgs::PoseStamped>("/move_base_simple/goal", 1);
 
 	wayptPub.publish(waypoints.poses[0]);
 

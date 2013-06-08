@@ -199,7 +199,7 @@ void adjustLidarScan(std::vector<tf::Vector3>& lidarPts) {
 		}
 	}
 
-    ROS_INFO("lane: min_angle = %i\tmax_angle = %i", minAngleChanged, maxAngleChanged);
+    //ROS_INFO("lane: min_angle = %i\tmax_angle = %i", minAngleChanged, maxAngleChanged);
     // pull the min/max angle back to end of scan
     if( minAngleChanged <= lidarFixRange.get() )
     {

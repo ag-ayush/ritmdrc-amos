@@ -18,7 +18,7 @@ Base::Base()
 
     // read speed constraints
     nh.param<double>("maxSpeedFwd", maxFwd, 1.0);
-    nh.param<double>("maxSpeedRev", maxRev, 1.0);
+    nh.param<double>("maxSpeedRev", maxRev, -1.0);
 
     // frames
     nh.param<std::string>("globalFrame", globalFrame, "/world");
@@ -179,6 +179,8 @@ void Base::moveSubCallback( const geometry_msgs::Twist::ConstPtr &msg )
     double left, right;
     left  = msg->linear.x - msg->angular.z*size.y;
     right = msg->linear.x + msg->angular.z*size.y;
+
+    ROS_INFO("amos_base: EARLY SPEED left = %f, right = %f", left, right);
 
     // find scales if needed
     double leftScale = 1.0, rightScale = 1.0;

@@ -6,6 +6,6 @@ global_costmap:
 
     static_map: false
     rolling_window: true
-    width: 60.0
-    height: 60.0
+    width: 120.0
+    height: 120.0
     resolution: 0.1
